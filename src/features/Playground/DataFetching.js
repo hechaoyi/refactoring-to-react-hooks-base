@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { useFetch } from "../../hooks/useFetch";
+import Loading from "../../common/components/Loading";
 
 const DataFetching = ({ endpoint }) => {
-  const [data, setData] = useState([]);
+  const { loading, error, data } = useFetch(endpoint);
 
-  useEffect(() => {
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(json => setData(json));
-  }, [endpoint]);
-
+  if (loading)
+    return <Loading />;
+  if (error)
+    return <p>Ops! Something went wrong: {error}</p>;
   return (
     <ul>
       {data.map(element => (
