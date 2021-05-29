@@ -6,17 +6,13 @@ import Main from "../../common/components/Main";
 import SummaryContainer from "./SummaryContainer";
 import Select from "../Playground/Select";
 
-const DashboardShell = () => {
+const DashboardShell = ({ fetchDataset }) => {
   const [selectedLabel, setSelectedLabel] = useState("");
 
-  // componentDidMount() {
-  //   this.props.fetchDataset(`${process.env.REACT_APP_BASE_URL}/totals/`);
-  // }
-
   const handleSelectChange = event => {
+    fetchDataset(event.target.value);
     const selectedLabel = event.target.selectedOptions[0].label;
     setSelectedLabel(selectedLabel);
-    // this.props.fetchDataset(event.target.value);
   };
 
   const optionsForSelect = [
