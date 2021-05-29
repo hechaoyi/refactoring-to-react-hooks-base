@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import LineChart from "./LineChart";
 import PropTypes from "prop-types";
-import { globalContext } from "../../App";
+import { DataContext } from "../../context/DataContext";
 
 const ChartContainer = ({ selectedLabel }) => {
-  const { data: dataset } = useContext(globalContext);
+  const { data: dataset } = useContext(DataContext);
 
   const chartLabels = dataset.map(dataPoint => dataPoint.timestamp);
   const chartValues = dataset.map(dataPoint => dataPoint.amount);
